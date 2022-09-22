@@ -72,10 +72,10 @@ exports.writeManifest = function (filePath, data) {
         Body: data,
         CacheControl: cacheControl,
         ContentType: "application/importmap+json",
-        ACL: "public-read",
         ...s3PutObjectConfigSansCacheControl,
       },
       function (err) {
+        console.log(JSON.stringify(err));
         if (err) reject(err);
         else resolve();
       }
@@ -100,6 +100,7 @@ exports.writeManifest = function (filePath, data) {
           ...s3PutObjectConfigSansCacheControl,
         },
         function (err) {
+          console.log(JSON.stringify(err));
           if (err) reject(err);
           else resolve();
         }

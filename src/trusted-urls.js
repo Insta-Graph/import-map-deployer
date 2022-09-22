@@ -19,6 +19,7 @@ exports.checkUrlUnsafe = (urlStr) => {
       if (typeof safe === "function") {
         return safe(url);
       } else if (typeof safe === "string") {
+        console.log(url.href);
         return url.href.startsWith(safe);
       } else {
         throw Error(

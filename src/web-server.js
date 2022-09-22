@@ -3,6 +3,7 @@
 require("dotenv").config();
 
 const express = require("express"),
+  serverless = require("serverless-http"),
   bodyParser = require("body-parser"),
   app = express(),
   ioOperations = require("./io-operations.js"),
@@ -306,3 +307,4 @@ if (process.env.NODE_ENV !== "test") {
 
 exports.app = app;
 exports.setConfig = setConfig;
+module.exports.handler = serverless(app);
