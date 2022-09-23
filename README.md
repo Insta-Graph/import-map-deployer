@@ -1,4 +1,30 @@
-# import-map-deployer
+# Snapify Import Map Deployer
+
+This is a project developed by Single Spa Team and adapted to Snapify needs. Follow the next steps to start running this:
+
+1. Change `config.json` fields, such as your AWS region, S3 bucket name according to the environment and `urlSafeList`
+
+```json
+{
+  "urlSafeList": ["https://${MICRO_FRONTEND_URL_PREFIX}/"],
+  "manifestFormat": "importmap",
+  "region": "us-east-1",
+  "locations": {
+    "prod": "s3://{BUCKET_NAME}/import-map.json",
+    "test": "s3:/{BUCKET_NAME}-dev/import-map.json"
+  }
+}
+```
+
+2. Run `serverless deploy` command passing the username and password that you will use to authenticate at the import map deployer application
+
+```
+serverless deploy --verbose --username {YOUR_USERNAME} --password {YOUR_PASSWORD}
+```
+
+> `urlSafeList` will contain the url prefix of your micro frontend, example, your CloudFront distribution `https://t9nei6k2dlub2c.cloudfront.net/`
+
+# Import-Map-Deployer docs
 
 [![Build Status](https://travis-ci.com/single-spa/import-map-deployer.svg?branch=master)](https://travis-ci.com/single-spa/import-map-deployer)
 
